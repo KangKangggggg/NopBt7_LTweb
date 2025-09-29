@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<div th:fragment="nav">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light mb-4">
+        <div class="container">
+            <div class="navbar-nav">
+                <a class="nav-link" th:href="@{/}">🏠 Trang chủ</a>
+                <a class="nav-link" th:href="@{/admin/categories}">📋 Quản lý Danh mục</a>
+                <a class="nav-link" th:href="@{/admin/categories/add}">➕ Thêm mới</a>
+                <a class="nav-link" th:href="@{/admin/categories/search}">🔍 Tìm kiếm</a>
+            </div>
+        </div>
+    </nav>
+</div>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{admin/layout-admin}">
+
+<div layout:fragment="content">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header">
+                    <h4 th:text="${isEdit} ? '✏️ Chỉnh sửa Danh mục' : '➕ Thêm Danh mục Mới'" 
+                        class="card-title mb-0"></h4>
+                </div>
+                <div class="card-body">
+                    <form th:action="${isEdit} ? @{/admin/categories/update} : @{/admin/categories/save}" 
+                          method="post" th:object="${category}">
+                        
+                        <div th:if="${isEdit}" class="mb-3">
+                            <label for="categoryId" class="form-label">ID Danh mục</label>
+                            <input type="text" class="form-control" id="categoryId" 
+                                   th:field="*{categoryId}" readonly>
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label for="name" class="form-label">Tên Danh mục <span class="text-danger">*</span></label>
+                            <input type="text" class="form-control" id="name" 
+                                   th:field="*{name}" required
+                                   placeholder="Nhập tên danh mục">
+                            <div class="form-text">Tên danh mục không được để trống</div>
+                        </div>
+                        
+                        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                            <button type="submit" class="btn btn-primary me-md-2">
+                                <span th:text="${isEdit} ? '💾 Cập nhật' : '✅ Thêm mới'"></span>
+                            </button>
+                            <a th:href="@{/admin/categories}" class="btn btn-secondary">↩️ Quay lại</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    // Client-side validation
+    document.addEventListener('DOMContentLoaded', function() {
+        const form = document.querySelector('form');
+        const nameInput = document.getElementById('name');
+        
+        form.addEventListener('submit', function(e) {
+            if (!nameInput.value.trim()) {
+                e.preventDefault();
+                alert('Vui lòng nhập tên danh mục!');
+                nameInput.focus();
+            }
+        });
+    });
+</script>
+</html>

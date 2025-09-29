@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<div th:fragment="header">
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+            <div class="container">
+                <a class="navbar-brand" th:href="@{/}">
+                    🏠 BT06 - Admin Panel
+                </a>
+                <div class="navbar-nav ms-auto">
+                    <a class="nav-link text-light" th:href="@{/admin/categories}">📋 Danh mục</a>
+                    <a class="nav-link text-light" th:href="@{/admin/categories/search}">🔍 Tìm kiếm</a>
+                </div>
+            </div>
+        </nav>
+    </header>
+</div>
+</html>
